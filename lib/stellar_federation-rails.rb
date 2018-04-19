@@ -1,0 +1,2 @@
+require "stellar_federation"
+
