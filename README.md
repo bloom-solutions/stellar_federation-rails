@@ -43,19 +43,12 @@ The engine helps produce that output by configuring the engine in an initializer
 
 ```ruby
 StellarFederation.configure do |c|
-  c.account_class = "User"
-  c.account_query_scope = "find_by_stellar_federated_address"
-  c.account_address_method = "stellar_friendly_id"
-  c.account_id_method = "stellar_address"
-  c.account_memo_method = "id"
+  c.on_query = "FindStellarFederatedAddress"
 end
 ```
 
-- `account_class` - is the model that the engine will use to query and respond for queries on federation addresses
-- `account_query_scope` - You define this in your account class: this is the scope on the model that the engine will call to search for a federated address given a query.
-- `account_address_method` - You define this in your account class: this is the attribute/method of the model that the engine will call to supply the `stellar_address` key in the response
-- `account_id_method` - You define this in your account class: this is the attribute/method of the model that the engine will call to supply the `account_id` key in the response
-- `account_memo_method` - You define this in your account class: this is the attribute/method of the model that the engine will call to supply the `memo` key in the response. Usually an ID or a name
+`c.on_query` - is a class the you define: The `on_query` class should also return a `StellarFederation::QueryResponse`. If it doesn't, the Rails engine will throw an exception. The `on_query` class will be passed a hash with the following parameters:
+  - `address_name` - ex: `tunder_adebayo*your_org.com`
 
 Add to your routes:
 
