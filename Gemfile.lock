@@ -2,9 +2,10 @@ PATH
   remote: .
   specs:
     stellar_federation-rails (0.1.0)
+      dry-initializer
       gem_config
       light-service
-      rails (~> 5.1.6)
+      rails (~> 5.1)
 
 GEM
   remote: https://rubygems.org/
@@ -48,9 +49,12 @@ GEM
       tzinfo (~> 1.1)
     arel (8.0.0)
     builder (3.2.3)
+    byebug (10.0.2)
+    coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     diff-lcs (1.3)
+    dry-initializer (2.4.0)
     erubi (1.7.1)
     gem_config (0.3.1)
     globalid (0.4.1)
@@ -71,6 +75,12 @@ GEM
     nio4r (2.3.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-byebug (3.6.0)
+      byebug (~> 10.0)
+      pry (~> 0.10)
     rack (2.0.4)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
@@ -135,6 +145,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  pry-byebug
   rspec-rails
   sqlite3
   stellar_federation-rails!
