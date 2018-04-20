@@ -2,7 +2,7 @@ class ProcessedStellarFederationQuery
 
   def self.call(opts = {})
     StellarFederation::QueryResponse.new(
-      stellar_address: opts[:stellar_address],
+      stellar_address: opts[:address_name],
       account_id: "FOOBAR",
       memo: 1,
     )
