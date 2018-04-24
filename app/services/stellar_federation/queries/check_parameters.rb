@@ -1,8 +1,13 @@
 module StellarFederation
   module Queries
     class CheckParameters
-      def self.call(params)
-        params[:q].present? && check_type(params[:type])
+      extend LightService::Action
+      expects :query_params
+
+      executed do |c|
+        unless c.query_params[:q].present? && check_type(c.query_params[:type])
+          c.fail! "Invalid Parameters"
+        end
       end
 
       private
