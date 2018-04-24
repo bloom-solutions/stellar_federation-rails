@@ -1,8 +1,8 @@
 class ProcessedStellarFederationQuery
 
-  def self.call(opts = {})
+  def self.call(query)
     StellarFederation::QueryResponse.new(
-      stellar_address: opts[:address_name],
+      stellar_address: query.address_name,
       account_id: "FOOBAR",
       memo: 1,
     )

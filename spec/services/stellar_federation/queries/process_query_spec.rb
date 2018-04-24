@@ -5,7 +5,9 @@ module StellarFederation
     RSpec.describe ProcessQuery do
       it "processes a query on the federation server" do
         actions = [
+          CheckParameters,
           PrepareOnQueryParameters,
+          ParseAddressName,
           TriggerOnQueryCallbackClass,
         ]
 

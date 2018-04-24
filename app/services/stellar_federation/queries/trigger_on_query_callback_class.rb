@@ -2,12 +2,12 @@ module StellarFederation
   module Queries
     class TriggerOnQueryCallbackClass
       extend LightService::Action
-      expects :query_params
+      expects :query
       promises :query_response
 
       executed do |c|
         begin
-          c.query_response = callback_class.(c.query_params)
+          c.query_response = callback_class.(c.query)
 
           if !c.query_response.is_a? StellarFederation::QueryResponse
             raise_return_error

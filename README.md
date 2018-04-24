@@ -47,8 +47,10 @@ StellarFederation.configure do |c|
 end
 ```
 
-`c.on_query` - is a class the you define: The `on_query` class should also return a `StellarFederation::QueryResponse`. If it doesn't, the Rails engine will throw an exception. The `on_query` class will be called with `.call`, it should have a method that accepts a hash with the following parameters:
+`c.on_query` - is a class the you define: The `on_query` class should also return a `StellarFederation::QueryResponse`. If it doesn't, the Rails engine will throw an exception. The `on_query` class will be called with `.call`, that accepts a `StellarFederation::Query` object
   - `address_name` - ex: `tunder_adebayo*your_org.com`
+  - `address_id` - ex: `tunder_adebayo`
+  - `address_domain` - ex: `your_org.com`
 
 Add to your routes:
 

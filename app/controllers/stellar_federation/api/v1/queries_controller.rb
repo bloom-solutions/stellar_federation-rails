@@ -3,30 +3,23 @@ module StellarFederation
     module V1
       class QueriesController < ApplicationController
         def index
-          check_parameters = Queries::CheckParameters.(query_params)
+          result = Queries::ProcessQuery.(query_params: query_params)
 
-          if check_parameters
-            @query_response = Queries::ProcessQuery.(query_params: query_params)
-              .query_response
+          respond_to do |format|
+            format.json do
+              if result.success?
+                @query_response = result.query_response
 
-            respond_to do |format|
-              format.json do
                 render json: @query_response.to_json, status: :ok
-              end
-            end
-          else
-            respond_to do |format|
-              format.json do
-                render(
-                  json: {
-                    status: "Unprocessable Entity",
-                    message: "Invalid Parameters",
-                  },
-                  status: :unprocessable_entity,
-                )
-              end
-            end
+              else
+                json_status = {
+                  status: "Unprocessable Entity",
+                  message: result.message,
+                }
 
+                render json: json_status, status: :unprocessable_entity
+              end
+            end
           end
 
         end
