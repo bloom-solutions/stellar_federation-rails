@@ -47,7 +47,11 @@ StellarFederation.configure do |c|
 end
 ```
 
-`c.on_query` - is a class the you define: The `on_query` class should also return a `StellarFederation::QueryResponse`. If it doesn't, the Rails engine will throw an exception. The `on_query` class will be called with `.call`, that accepts a `StellarFederation::Query` object
+- `c.on_query` contains a class the you define
+- The `on_query` class should also return a `StellarFederation::QueryResponse`.
+- You can return nothing if you don't find a record
+- If you return something and it's not a `StellarFederation::QueryResponse`, the Rails engine will throw an exception.
+- The `on_query` class will be called with `.call`, that accepts a `StellarFederation::Query` object:
   - `address_name` - ex: `tunder_adebayo*your_org.com`
   - `address_id` - ex: `tunder_adebayo`
   - `address_domain` - ex: `your_org.com`

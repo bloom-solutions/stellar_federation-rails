@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    stellar_federation-rails (0.2.0)
+    stellar_federation-rails (0.2.1)
       dry-struct
       gem_config
       light-service
