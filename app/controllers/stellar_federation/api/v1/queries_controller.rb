@@ -10,12 +10,13 @@ module StellarFederation
               if result.success?
                 @query_response = result.query_response
 
-                render json: @query_response.to_json, status: :ok
+                if @query_response.present?
+                  render json: @query_response.to_json, status: :ok
+                else
+                  render json: @query_response.to_json, status: :not_found
+                end
               else
-                json_status = {
-                  status: "Unprocessable Entity",
-                  message: result.message,
-                }
+                json_status = { details: result.message }
 
                 render json: json_status, status: :unprocessable_entity
               end
