@@ -9,8 +9,10 @@ module StellarFederation
         begin
           c.query_response = callback_class.(c.query)
 
-          if !c.query_response.is_a? StellarFederation::QueryResponse
-            raise_return_error
+          if c.query_response.present?
+            if !c.query_response.is_a? StellarFederation::QueryResponse
+              raise_return_error
+            end
           end
         rescue NameError => e
           raise NameError, "StellarFederation.on_query isn't configured"
