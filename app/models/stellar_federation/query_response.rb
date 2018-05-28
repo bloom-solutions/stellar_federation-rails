@@ -1,10 +1,9 @@
 module StellarFederation
   class QueryResponse < BaseModel
 
-    attribute :account_id, DryTypes::String.optional
-    attribute :memo, DryTypes::String.optional
-    attribute :stellar_address, DryTypes::String.optional
-    attr_writer :memo, :account_id, :stellar_address
+    attribute :account_id, String
+    attribute :memo, String
+    attribute :stellar_address, String
 
     def memo_type
       "text"
