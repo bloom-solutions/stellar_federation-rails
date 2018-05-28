@@ -1,6 +1,6 @@
 require "gem_config"
 require "light-service"
-require "dry-struct"
+require "virtus"
 require "stellar_federation/engine"
 
 module StellarFederation

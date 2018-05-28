@@ -38,12 +38,13 @@ RSpec.describe "/api/v1/queries", type: :request do
 
       expect(response).to be_success
       expect(response.status).to eq 200
+      expect(headers["Access-Control-Allow-Origin"]).to eq "*"
 
       json = JSON.parse(response.body)
       expect(json["stellar_address"]).to eq "foo*bar.com"
       expect(json["account_id"]).to eq "FOOBAR"
       expect(json["memo_type"]).to eq "text"
-      expect(json["memo"]).to eq 1
+      expect(json["memo"]).to eq "1"
     end
   end
 
