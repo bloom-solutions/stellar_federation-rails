@@ -4,7 +4,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [0.2.3]
+### Fixed
 - Use `before_action` instead of `before_filter` on `queries_controller`
 
 ## [0.2.2]
