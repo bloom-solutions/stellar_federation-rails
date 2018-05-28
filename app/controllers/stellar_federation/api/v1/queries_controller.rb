@@ -2,7 +2,7 @@ module StellarFederation
   module Api
     module V1
       class QueriesController < ApplicationController
-        before_filter :set_cors_headers, only: %i[index]
+        before_action :set_cors_headers, only: %i[index]
 
         def index
           result = Queries::ProcessQuery.(query_params: query_params)
