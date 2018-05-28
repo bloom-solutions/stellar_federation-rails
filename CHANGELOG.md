@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Fixed
+- Set the correct headers to allow access from other domains
+
 ## [0.2.1]
 ### Changed
 - Add returned status to `404` if record is not found
